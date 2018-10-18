@@ -1,0 +1,78 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "touristappid",
+	"projectname": "wechatapp",
+	"miniprogramRoot": "./dist",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "mallList",
+					"pathName": "pages/mallList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/goodsDetails",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "shoppingCart",
+					"pathName": "pages/shoppingCart",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "goodsDetails",
+					"pathName": "pages/goodsDetails",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myOrder",
+					"pathName": "pages/myOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "confirmOrder",
+					"pathName": "pages/confirmOrder",
+					"query": ""
+				}
+			]
+		}
+	}
+}

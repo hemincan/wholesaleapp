@@ -1,0 +1,148 @@
+<style>
+.tabActive {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.tabContent {
+  background: #f5f5f5;
+  transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  /* Firefox 4 */
+  -webkit-transition: right 0.5s;
+  /* Safari 和 Chrome */
+  -o-transition: right 0.5s;
+  /* Opera */
+}
+</style>
+<template>
+  <view>
+    <view style="display:flex;justify-content: space-around;background:#fff;width:100%;z-index:500">
+      <repeat for="{{tabData}}" key="index" index="index" item="item">
+        <view @tap="selectTab({{item}})" class="{{currentTab==item?'tabActive':''}}" style="height:25px;text-align:center;padding:5px 0 5px 0;font-size:15px;">{{item}}</view>
+      </repeat>
+    </view>
+    <view style="margin-top:0px;" bindtouchstart="touchStart" bindtouchend="touchEnd">
+       <slot name="content"></slot>
+       
+     
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+var time = 0;
+var touchDot = 0; //触摸时的原点
+var interval = "";
+var flag_hd = true;
+export default class Counter extends wepy.component {
+  props = {
+    tabData: {
+      type: Object,
+      default: []
+    },
+    orderData: {
+      type: Array,
+      default: []
+    },
+    currentTab:{
+      type:String,
+      default:''
+    }
+  }
+
+  data = {
+    currentTabIndex: 0,
+    windowWidth: 500,
+    windowHeight: 500,
+  }
+
+  onLoad() {
+    if (this.swipeData) {
+      this.swipeData.style = 0;
+    }
+  }
+
+  methods = {
+    selectTab(item) {
+      this.currentTab = item;
+      for (var i = 0; i < this.tabData.length; i++) {
+        if (this.tabData[i] == item) {
+          this.currentTabIndex = i;
+          this.$emit('tabChange', item);
+        }
+      }
+      // flag_hd = true;
+    },
+    touchStart(e) {
+      touchDot = e.touches[0].pageX; // 获取触摸时的原点
+      // 使用js计时器记录时间    
+      console.log("start")
+      // interval = setInterval(function () {
+      //   time++;
+      // }, 100);
+      // var _this = this;
+      // interval = setInterval(function () {
+      //   _this.right=500;
+      //   console.log(_this.right)
+      // }, 100);
+    },
+    // 触摸结束事件
+    touchEnd(e) {
+      var touchMove = e.changedTouches[0].pageX;
+      // 向左滑动   
+      console.log(time);
+      if (touchMove - touchDot <= -60 && time < 10 && flag_hd == true) {
+        // var _this = this;
+        // setTimeout(()=>{
+        //   console.log(_this.right)
+        //   _this.right=-0;
+        // },1000);
+        // flag_hd = false;
+        //执行切换页面的方法
+        console.log("向右滑动");
+        this.currentTab = this.tabData[this.currentTabIndex + 1];
+         this.$emit('tabChange', this.currentTab);
+        this.currentTabIndex++;
+        if (this.currentTabIndex >= this.tabData.length - 1) {
+          this.currentTabIndex = this.tabData.length - 1
+        }
+        // wx.navigateTo({
+        //   url: '../right/right'
+        // })
+      }
+      // 向右滑动   
+      if (touchMove - touchDot >= 60 && time < 10 && flag_hd == true) {
+
+        // flag_hd = false;
+        //执行切换页面的方法
+        console.log("向左滑动");
+        this.currentTab = this.tabData[this.currentTabIndex - 1];
+         this.$emit('tabChange', this.currentTab);
+        this.currentTabIndex--;
+        if (this.currentTabIndex <= 0) {
+          this.currentTabIndex = 0;
+        }
+        // wx.navigateTo({
+        //   url: '../left/left'
+        // })
+      }
+      // clearInterval(interval); // 清除setInterval
+
+      time = 0;
+    }
+  };
+  onLoad() {
+    let _this = this;
+    //获取系统 的信息
+    wx.getSystemInfo({
+      success: function(res) {
+        _this.windowWidth = res.screenWidth;
+        _this.windowHeight = res.screenHeight;
+
+      }
+    });
+  }
+}
+
+</script>

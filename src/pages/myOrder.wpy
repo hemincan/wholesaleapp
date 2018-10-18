@@ -1,0 +1,195 @@
+<template>
+  <view style="">
+    <view style="width:98%;" class="top_search">
+      <view class="search_read_only">
+        <navigator class="search_content" url="/pages/search">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="search_input">输入关键字</view>
+        </navigator>
+      </view>
+    </view>
+    <TabComponent :currentTab="currentTab" :tabData="tabData" :orderData="orderData" @tabChange="tabChange">
+      <view slot="content" style="position: relative;">
+        <view class="tabContent" style="position:absolute;width:100%;min-height:{{windowHeight}}px;right:{{currentTab=='待处理'?0:windowWidth*3+60}}px">
+          <repeat for="{{orderData}}" key="index" index="index" item="item">
+            <view style="width:100%;background:#fff;margin-top:5px;padding:10px;">
+              <view style="display:flex;font-size:12px;height:30px;color:#8a8a8a;">
+                <view style="width:40%;">订单号：1524221425</view>
+                <view style="width:52%;text-align:right;">2018-9-10 13:23:43</view>
+              </view>
+              <view style="display:flex;">
+                <view style="width:20%;">
+                  <image style="width:130rpx;height: 130rpx;" src="../images/goods02.png"></image>
+                </view>
+                <view style="width:60%;font-size:14px;">
+                  标题标题标题标题标题标题
+                </view>
+                <view style="width:15%;color:#666;font-size:12px;text-align:right;">
+                  <view>￥22211</view>
+                  <view>x1</view>
+                </view>
+              </view>
+              <view style="text-align: right;width: 95%;">实收：¥2000.0</view>
+              <view style="display:flex;height:30px;line-height:30px;">
+                <view style="width:20%;color:red;font-size:12px;">
+                  线下付款
+                </view>
+                <view style="width:40%;font-size:12px;color:#777;text-align:right;">
+                  共一件商品
+                </view>
+                <view style="margin-left:40rpx;;width:40%;color:#777;font-size:12px;">
+                  实收合计：￥1522
+                </view>
+              </view>
+              <view style="text-align: right;width: 95%;">
+                应收合计：￥1522
+              </view>
+              <view style="padding: 10px 0px;font-size: 14px;color:#777;">
+                备注留言：送备用电车一对
+              </view>
+              <view style="padding:0px;margin-top:5px;display:flex;">
+                <view style="width:95%;text-align:right;">
+                  <view style="border:1px solid red;color:red;width:80px;height:20px;line-height:20px;border-radius:25px;font-size:12px;text-align:center;float: right;"> 确认收货
+                  </view>
+                  <view style="border:1px solid #888;color:#888;width:80px;height:20px;line-height:20px;border-radius:25px;font-size:12px;text-align:center;float: right;margin-right: 10px;"> 取消订单
+                  </view>
+                </view>
+              </view>
+            </view>
+          </repeat>
+        </view>
+        <view class="tabContent" style="position:absolute;width:100%; min-height:{{windowHeight}}px;right:{{currentTab=='已发货'?0:windowWidth*3+60}}px">
+          <repeat for="{{orderData}}" key="index" index="index" item="item">
+            <view style="width:100%;background:#fff;margin-top:5px;padding:10px;">
+              <view style="display:flex;font-size:12px;height:30px;color:#8a8a8a;">
+                <view style="width:40%;">订单号：1524221425</view>
+                <view style="width:52%;text-align:right;">2018-9-10 13:23:43</view>
+              </view>
+              <view style="display:flex;">
+                <view style="width:20%;">
+                  <image style="width:130rpx;height: 130rpx;" src="../images/goods02.png"></image>
+                </view>
+                <view style="width:60%;font-size:14px;">
+                  标题标题标题标题标题标题
+                </view>
+                <view style="width:15%;color:#666;font-size:12px;text-align:right;">
+                  <view>￥22211</view>
+                  <view>x1</view>
+                </view>
+              </view>
+              <view style="display:flex;height:30px;line-height:30px;">
+                <view style="width:20%;color:red;font-size:12px;">
+                  线下付款
+                </view>
+                <view style="width:40%;font-size:12px;color:#777;text-align:right;">
+                  共一件商品
+                </view>
+                <view style="margin-left:40rpx;;width:25%;color:#777;font-size:12px;">
+                  合计：￥1522
+                </view>
+              </view>
+            </view>
+          </repeat>
+        </view>
+        <view class="tabContent" style="position:absolute;width:100%; min-height:{{windowHeight}}px;right:{{currentTab=='已取消'?0:windowWidth*3+60}}px">
+          待收货
+        </view>
+        <view class="tabContent" style="position:absolute;width:100%; min-height:{{windowHeight}}px;right:{{currentTab=='全部'?0:windowWidth*3+60}}px">
+          已完成
+        </view>
+      </view>
+    </TabComponent>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+import TabComponent from './TabComponent'
+export default class MyOrder extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的订单'
+  };
+  components = {
+    TabComponent
+  };
+
+  data = {
+    windowWidth: 500,
+    windowHeight: 500,
+    right: 0,
+    left: 0,
+    currentTab: '待处理',
+    tabData: [
+      "待处理",
+      "已发货",
+      "已取消",
+      "全部"
+    ],
+    orderData: [{
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      }
+    ],
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+    'tabChange':(item)=> {
+      this.currentTab=item;
+      console.log(this.currentTab)
+    }
+  };
+  onReachBottom() {
+
+  };
+  onLoad() {
+    let _this = this;
+    //获取系统 的信息
+    wx.getSystemInfo({
+      success: function(res) {
+        _this.windowWidth = res.screenWidth;
+        _this.windowHeight = res.screenHeight;
+
+      }
+    });
+  }
+}
+
+</script>
+<style>
+@import "../style/search";
+
+.tabActive {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.tabContent {
+  background: #f5f5f5;
+  transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  /* Firefox 4 */
+  -webkit-transition: right 0.5s;
+  /* Safari 和 Chrome */
+  -o-transition: right 0.5s;
+  /* Opera */
+}
+
+</style>

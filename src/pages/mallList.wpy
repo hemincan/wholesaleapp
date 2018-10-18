@@ -1,0 +1,154 @@
+<style lang="less">
+@import "../style/search";
+
+.tabActive {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.tabContent {
+  background: #f5f5f5;
+  transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  /* Firefox 4 */
+  -webkit-transition: right 0.5s;
+  /* Safari 和 Chrome */
+  -o-transition: right 0.5s;
+  /* Opera */
+}
+.textinput {
+  text-align: right;
+  width: 100%;
+}
+</style>
+<template>
+  <view class="page">
+    <TabComponent :currentTab="currentTab" :tabData="tabData" :orderData="orderData" @tabChange="tabChange">
+      <view slot="content" style="position: relative;">
+        <view class="tabContent" style="position:absolute;width:100%;min-height:{{windowHeight}}px;right:{{currentTab=='出售中'?0:windowWidth*3+60}}px">
+          <!--  -->
+          <MallListItem></MallListItem>
+          <view style="display: flex;justify-content: space-around;padding: 10px;">
+            <view>编辑</view>
+            <view>下架</view>
+            <view>删除</view>
+          </view>
+        </view>
+        <view class="tabContent" style="position:absolute;width:100%;min-height:{{windowHeight}}px;right:{{currentTab=='已下架'?0:windowWidth*3+60}}px">
+          <MallListItem></MallListItem>
+          <view style="display: flex;justify-content: space-around;padding: 10px;">
+            <view>编辑</view>
+            <view>下架</view>
+            <view>删除</view>
+          </view>
+        </view>
+        <view class="tabContent" style="position:absolute;width:100%;min-height:{{windowHeight}}px;right:{{currentTab=='分类'?0:windowWidth*3+60}}px">
+          <MallListItem></MallListItem>
+        </view>
+         <view class="tabContent" style="position:absolute;width:100%;min-height:{{windowHeight}}px;right:{{currentTab=='新增'?0:windowWidth*3+60}}px">
+          <view style="margin-top: 5px;background: #fff;padding: 5px;">
+            <view style="display: flex;height: 100px;">
+                <view style="width: 25%;text-align: center;">上传</view>
+                <view style="width: 75%;text-align: center;">点击上传商品封面</view>
+            </view>
+            <view style="border: 1px #ccc solid;padding: 5px;">
+                <textarea style="height: 60px" placeholder="请输入商品标题" maxlength="30"></textarea>
+               
+            </view>
+
+            <view style="margin-top: 20px;">
+                <view style="display: flex;margin-top: 10px;">
+                   <view>商品分类</view>
+                   <view style="width: 75%;"><input class="textinput" placeholder="无分类" type="text"></input></view>
+                </view>
+                <view style="display: flex;margin-top: 10px;">
+                   <view style="width: 75%;">商品售价</view>
+                   <view><input class="textinput" placeholder="0.00" type="text"></input></view>
+                </view>
+                <view style="display: flex;margin-top: 10px;">
+                   <view style="width: 75%;">商品库存</view>
+                   <view><input class="textinput" placeholder="0.00" type="text"></input></view>
+                </view>
+            </view>
+          </view>
+        </view>
+        <!--  -->
+      </view>
+    </TabComponent>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+import TabComponent from '../components/TabComponent'
+import MallListItem from '../components/mallListItem'
+export default class MallList extends wepy.page {
+  config = {
+    navigationBarTitleText: '全部商品'
+  };
+  components = {
+    TabComponent,
+    MallListItem
+  };
+
+  data = {
+    windowWidth: 500,
+    windowHeight: 500,
+    currentTab: '新增',
+    tabData: [
+      "出售中",
+      "已下架",
+      "分类",
+      "新增"
+    ],
+    orderData: [{
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      },
+      {
+        name: '152345'
+      }
+    ],
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+    'tabChange': (item) => {
+      this.currentTab = item;
+      console.log(this.currentTab)
+    }
+  };
+  onReachBottom() {
+
+  };
+  onPullDownRefresh() {
+
+  };
+  onLoad() {
+    let _this = this;
+    //获取系统 的信息
+    wx.getSystemInfo({
+      success: function(res) {
+        _this.windowWidth = res.screenWidth;
+        _this.windowHeight = res.screenHeight;
+
+      }
+    });
+  }
+}
+
+</script>

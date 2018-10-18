@@ -1,0 +1,58 @@
+<style lang="less">
+</style>
+<template>
+  <view>
+    <view>
+      <view style="display: flex;background: #fff;margin-top: 5px;height: 100px;padding: 5px;">
+        <view style="width:30%;">
+          <image style="width:80px;height: 80px" src="../images/goods02.png"></image>
+        </view>
+        <view>
+          <view style="font-size: 14px;">标题标题标题标题标题标题标题标</view>
+          <view style="font-size: 16px;margin-top: 20px;display: flex;">
+            <view style="color:red;text-align: left;width: 50%;">价格</view>
+            <view style="text-align: right;width: 50%;font-size: 14px;">
+              <view>库存</view>
+              <view>已售</view>
+            </view>
+          </view>
+        </view>
+      </view>
+     
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class MallListItem extends wepy.component {
+  props = {
+    num: {
+      type: [Number, String],
+      coerce: function(v) {
+        return +v
+      },
+      default: 50
+    }
+  }
+
+  data = {}
+  events = {
+    'index-broadcast': (...args) => {
+      let $event = args[args.length - 1]
+      console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+    }
+  }
+
+  watch = {
+    num(curVal, oldVal) {
+      console.log(`旧值：${oldVal}，新值：${curVal}`)
+    }
+  }
+
+  methods = {
+
+  }
+}
+
+</script>
