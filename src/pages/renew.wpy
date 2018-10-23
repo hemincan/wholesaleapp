@@ -1,0 +1,76 @@
+<template>
+  <view class="page">
+    <view style="background: #fff;margin-top: 10px;font-size:15px;">
+      <view class="weui-cell" style="position: static;border-bottom:1px solid #f5f5f5">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; ">
+            <image style="width: 50rpx;height: 50rpx;vertical-align:middle;" src="../images/my/yhq.png" />金点子智能锁一级代理门店
+          </view>
+        </view>
+        <view class="weui-cell__ft ">
+        </view>
+      </view>
+      <view class="weui-cell" style="position: static;border-bottom:1px solid #f5f5f5">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">
+            <image style="width: 50rpx;height: 50rpx;vertical-align:middle;" src="../images/my/jf.png" />续费期限
+          </view>
+        </view>
+        <view class="weui-cell__ft ">3月</view>
+      </view>
+      <view class="weui-cell" style="position: static;border-bottom:1px solid #f5f5f5">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">
+            <image style="width: 50rpx;height: 50rpx;vertical-align:middle;" src="../images/my/dz.png" />续费金额
+          </view>
+        </view>
+        <view class="weui-cell__ft ">500元</view>
+      </view>
+      <view style="text-align: right;">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox">
+            <checkbox value="" checked="true" />开通自动续费
+          </label>
+        </checkbox-group>
+      </view>
+      <button class="weui-btn" style="background:red;" type="warn">确定支付</button>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class template extends wepy.page {
+  config = {
+    navigationBarTitleText: '在线续费'
+  };
+  components = {
+
+  };
+
+  data = {
+
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+
+  };
+  onReachBottom() {
+
+  };
+  onLoad() {
+
+  }
+}
+
+</script>
+<style>
+</style>

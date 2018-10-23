@@ -103,7 +103,7 @@
 </template>
 <script>
 import wepy from 'wepy'
-import TabComponent from './TabComponent'
+import TabComponent from '../components/TabComponent'
 export default class MyOrder extends wepy.page {
   config = {
     navigationBarTitleText: '我的订单'
