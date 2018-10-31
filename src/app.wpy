@@ -61,7 +61,8 @@ export default class extends wepy.app {
       'pages/my',
       'pages/myOrder',
       'pages/login',
-      'pages/renew'
+      'pages/renew',
+      'pages/renewRecord'
 
       
     ],

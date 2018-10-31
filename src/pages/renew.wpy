@@ -34,6 +34,10 @@
         </checkbox-group>
       </view>
       <button class="weui-btn" style="background:red;" type="warn">确定支付</button>
+
+       <navigator url="/pages/renewRecord">
+          <button class="weui-btn" style="background:#ccc;" type="warn">续费记录</button>
+      </navigator>
     </view>
   </view>
 </template>

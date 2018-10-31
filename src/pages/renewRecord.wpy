@@ -1,0 +1,65 @@
+
+<template>
+   <view class="page">
+        
+        <repeat for="{{list}}" key="index" index="index" item="item">
+           <view style="display: flex;height: 70px;line-height: 70px;border-bottom: 1px solid #ccc;">
+                <view style="width:10%;">围标</view>
+                <view style="width:60%;line-height: 20px;margin-top: 20px;">
+                    <view>有效起至：{{item.endTime}}</view>
+                    <view>{{item.startTime}}</view>
+                </view>
+                <view style="width:30%;text-align: center;">{{item.price}}</view>
+            </view>
+        </repeat>
+    </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class renewRecord extends wepy.page {
+    config = {
+      navigationBarTitleText: '续费记录'
+    };
+    components = {
+     
+    };
+
+    data = {
+      list:[
+        {
+          startTime:'2018年2月10号',
+          endTime:'2018年2月10号',
+          price:500
+        },
+         {
+          startTime:'2018年2月10号',
+          endTime:'2018年2月10号',
+          price:500
+        }
+      ]
+    };  
+
+    computed = {
+        
+    };
+
+    methods = {
+       
+    };
+
+    events = {
+     
+    };
+    onReachBottom() {
+       
+    };
+    onLoad() {
+       
+    }
+  }
+</script>
+<style>
+
+</style>
