@@ -1,0 +1,61 @@
+<template>
+  <view class="page">
+    <repeat for="{{classifyData}}" key="index" index="index" item="item">
+      <view class="weui-cell" style="position: static;border-bottom:1px solid #f5f5f5">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">
+            <!-- <image style="width: 50rpx;height: 50rpx;vertical-align:middle;" src="../images/my/dz.png" /> -->
+            {{item.name}}
+          </view>
+        </view>
+        <view class="weui-cell__ft ">
+          <image style="width: 40rpx;height: 40rpx;vertical-align:middle;" src="../images/up.png" />
+          <image style="width: 40rpx;height: 40rpx;vertical-align:middle;" src="../images/dele.png" />
+        </view>
+      </view>
+    </repeat>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class editClassify extends wepy.page {
+  config = {
+    navigationBarTitleText: '分类编辑'
+  };
+  components = {
+
+  };
+
+  data = {
+    classifyData: [{
+      name: '测试'
+    }, {
+      name: '测试'
+    }, {
+      name: '测试'
+    }]
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+
+  };
+  onReachBottom() {
+
+  };
+  onLoad() {
+
+  }
+}
+
+</script>
+<style>
+</style>

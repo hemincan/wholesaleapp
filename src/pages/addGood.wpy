@@ -1,0 +1,68 @@
+<template>
+  <view class="page">
+    <view style="margin-top: 5px;background: #fff;padding: 5px;">
+      <view style="display: flex;height: 100px;">
+        <view style="width: 25%;text-align: center;">上传</view>
+        <view style="width: 75%;text-align: center;">点击上传商品封面</view>
+      </view>
+      <view style="border: 1px #ccc solid;padding: 5px;">
+        <textarea style="height: 60px" placeholder="请输入商品标题" maxlength="30"></textarea>
+      </view>
+      <view style="margin-top: 20px;">
+        <view style="display: flex;margin-top: 10px;">
+          <view>商品分类</view>
+          <view style="width: 75%;"><input class="textinput" placeholder="无分类" type="text"></input></view>
+        </view>
+        <view style="display: flex;margin-top: 10px;">
+          <view style="width: 75%;">商品售价</view>
+          <view><input class="textinput" placeholder="0.00" type="text"></input></view>
+        </view>
+        <view style="display: flex;margin-top: 10px;">
+          <view style="width: 75%;">商品库存</view>
+          <view><input class="textinput" placeholder="0.00" type="text"></input></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class addGood extends wepy.page {
+  config = {
+    navigationBarTitleText: '新增商品'
+  };
+  components = {
+
+  };
+
+  data = {
+
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+
+  };
+  onReachBottom() {
+
+  };
+  onLoad() {
+
+  }
+}
+
+</script>
+<style>
+.textinput {
+  text-align: right;
+  width: 100%;
+}
+</style>

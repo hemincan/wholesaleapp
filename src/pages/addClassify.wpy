@@ -1,0 +1,65 @@
+<template>
+  <view class="page">
+    <view style="display: flex;margin: 5px;background: #eee;">
+      <view style="width: 100%;">
+        <input style="padding: 3px;width: 100%;" placeholder="请输入分类" type="text"></input>
+      </view>
+      <view><button style="background:red;height: 30px;padding: 0;width: 60px;line-height: 30px;border-radius: 0px;" type="warn">新增</button></view>
+    </view>
+    <view>
+      <view>最新新增分类</view>
+      <view style="display: flex;">
+        <repeat for="{{classifyData}}" key="index" index="index" item="item">
+          <view style="background: #eee;min-width: 60px;width: 60px;text-align: center;margin: 5px;">{{item.name}}</view>
+        </repeat>
+      </view>
+    </view>
+    <view style="width: 100%;position: absolute;bottom: 0px;display: flex;background: #fff;">
+      <view style="width: 50%;"><button style="background:#eee;height: 40px;padding: 0;line-height: 40px;border-radius: 0px;" type="warn">取消</button></view>
+      <view  style="width: 50%;"><button style="background:red;height: 40px;padding: 0;line-height: 40px;border-radius: 0px;" type="warn">保存</button></view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class addClassify extends wepy.page {
+  config = {
+    navigationBarTitleText: '新增分类'
+  };
+  components = {
+
+  };
+
+  data = {
+    classifyData: [{
+        name: '哈哈'
+      },
+      {
+        name: '哈哈'
+      }
+    ]
+  };
+
+  computed = {
+
+  };
+
+  methods = {
+
+  };
+
+  events = {
+
+  };
+  onReachBottom() {
+
+  };
+  onLoad() {
+
+  }
+}
+
+</script>
+<style>
+</style>

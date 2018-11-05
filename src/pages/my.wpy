@@ -89,6 +89,7 @@
           </view>
           <view class="weui-cell__ft weui-cell__ft_in-access">
             2019年12月24日到期
+            <image style="width: 50rpx;height: 50rpx;vertical-align:middle;" src="../images/my/per_09.png" />
           </view>
         </view>
       </navigator>
